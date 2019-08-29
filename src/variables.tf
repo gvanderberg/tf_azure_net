@@ -47,7 +47,7 @@ variable "virtual_network_name" {
 
 variable "tags" {
   default = {
-    environment = "Development"
+    environment = "__tags_environment__"
     managedBy   = "__tags_managed_by__"
   }
   type = "map"
