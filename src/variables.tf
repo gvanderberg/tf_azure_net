@@ -48,7 +48,7 @@ variable "virtual_network_name" {
 variable "tags" {
   default = {
     environment = "Development"
-    managedBy   = "gvanderberg@titansoftware.co.za"
+    managedBy   = "__tags_managed_by__"
   }
   type = "map"
 }
