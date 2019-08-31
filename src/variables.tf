@@ -20,11 +20,6 @@ variable "tenant_id" {
 }
 # --------------------------------------------------------------
 
-variable "network_ddos_protection_plan_name" {
-  default = "__network_ddos_protection_plan_name__"
-  type    = "string"
-}
-
 variable "network_security_group_name" {
   default = "__network_security_group_name__"
   type    = "string"
