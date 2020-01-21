@@ -18,6 +18,7 @@ variable "tags" {
   default = {
     createdBy   = "__tags_created_by__"
     environment = "__tags_environment__"
+    location    = "__tags_location__"
     managedBy   = "__tags_managed_by__"
   }
 }
