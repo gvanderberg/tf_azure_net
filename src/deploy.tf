@@ -1,4 +1,4 @@
-module "network" {
+module "vnet" {
   source = "./modules/networking"
 
   network_security_group_name = var.network_security_group_name
