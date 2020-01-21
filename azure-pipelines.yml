@@ -4,6 +4,10 @@ trigger:
 variables:
 - group: Terraform BE
 - group: Terraform CLI
+- name: tf_path
+  value: $(Pipeline.Workspace)/drop
+- name: tf_state_key
+  value: $(Build.BuildId)
 
 stages:
 - stage: build
@@ -74,11 +78,11 @@ stages:
             workingDirectory: $(Pipeline.Workspace)/drop
 
           - script: |
-              echo "Compressing $(Pipeline.Workspace)/drop directory..."
-              tar -czf $(Build.BuildId).tar.gz -C $(Pipeline.Workspace)/drop .
-            displayName: 'Compress $(Pipeline.Workspace)/drop Artifact'
+              echo "Compressing $(tf_path) directory..."
+              tar -czf $(tf_state_key).tar.gz -C $(tf_path) .
+            displayName: 'Compress $(tf_path) Artifact'
 
-          - publish: $(Build.BuildId).tar.gz
+          - publish: $(tf_state_key).tar.gz
             artifact: tfplan
 
 - stage: terraform_apply
@@ -101,9 +105,9 @@ stages:
             artifact: tfplan
 
           - script: |
-              mkdir -p $(Build.BuildId)/tf 
-              tar -xzvf tfplan/$(Build.BuildId).tar.gz --directory $(Build.BuildId)/tf
-            displayName: 'Extract Artifact to $(Build.BuildId)/tf'
+              mkdir -p $(tf_state_key)/tf 
+              tar -xzvf tfplan/$(tf_state_key).tar.gz --directory $(tf_state_key)/tf
+            displayName: 'Extract Artifact to $(tf_state_key)/tf'
             workingDirectory: '$(Pipeline.Workspace)'
 
           - script: |
@@ -114,4 +118,4 @@ stages:
               ARM_CLIENT_SECRET: $(tf_client_secret)
               ARM_TENANT_ID: $(tf_tenant_id)
               ARM_SUBSCRIPTION_ID: $(tf_subscription_id)
-            workingDirectory: $(Pipeline.Workspace)/$(Build.BuildId)/tf
+            workingDirectory: $(Pipeline.Workspace)/$(tf_state_key)/tf
