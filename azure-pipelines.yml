@@ -101,9 +101,9 @@ stages:
             artifact: tfplan
 
           - script: |
-              mkdir -p $(Build.BuildId)/Terraform 
-              tar -xzvf tfplan/$(Build.BuildId).tar.gz --directory $(Build.BuildId)/Terraform
-            displayName: 'Extract Artifact to $(Build.BuildId)/Terraform'
+              mkdir -p $(Build.BuildId)/tf 
+              tar -xzvf tfplan/$(Build.BuildId).tar.gz --directory $(Build.BuildId)/tf
+            displayName: 'Extract Artifact to $(Build.BuildId)/tf'
             workingDirectory: '$(Pipeline.Workspace)'
 
           - script: |
@@ -114,4 +114,4 @@ stages:
               ARM_CLIENT_SECRET: $(tf_client_secret)
               ARM_TENANT_ID: $(tf_tenant_id)
               ARM_SUBSCRIPTION_ID: $(tf_subscription_id)
-            workingDirectory: $(Pipeline.Workspace)/$(Build.BuildId)/Terraform
+            workingDirectory: $(Pipeline.Workspace)/$(Build.BuildId)/tf
