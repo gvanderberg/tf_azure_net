@@ -73,7 +73,12 @@ stages:
               ARM_SUBSCRIPTION_ID: $(tf_subscription_id)
             workingDirectory: $(Pipeline.Workspace)/drop
 
-          - publish: $(Pipeline.Workspace)/drop
+          - script: |
+              echo "Compressing $(Pipeline.Workspace)/drop directory..."
+              tar -czf $(Build.BuildId).tar.gz -C $(Pipeline.Workspace)/drop .
+            displayName: 'Compress $(Pipeline.Workspace)/drop Artifact'
+
+          - publish: $(Build.BuildId).tar.gz
             artifact: tfplan
 
 - stage: terraform_apply
@@ -96,6 +101,12 @@ stages:
             artifact: tfplan
 
           - script: |
+              mkdir -p $(Build.BuildId)/Terraform 
+              tar -xzvf tfplan/$(Build.BuildId).tar.gz --directory $(Build.BuildId)/Terraform
+            displayName: 'Extract Artifact to $(Build.BuildId)/Terraform'
+            workingDirectory: '$(Pipeline.Workspace)'
+
+          - script: |
               terraform apply -auto-approve -no-color -input=false tfplan
             displayName: terraform apply
             env:
@@ -103,4 +114,4 @@ stages:
               ARM_CLIENT_SECRET: $(tf_client_secret)
               ARM_TENANT_ID: $(tf_tenant_id)
               ARM_SUBSCRIPTION_ID: $(tf_subscription_id)
-            workingDirectory: $(Pipeline.Workspace)/tfplan
+            workingDirectory: $(Pipeline.Workspace)/$(Build.BuildId)/Terraform
