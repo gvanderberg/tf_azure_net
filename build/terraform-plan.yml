@@ -1,7 +1,10 @@
+parameters:
+  environment: ''
+
 jobs:
 - deployment: terraform_plan
   displayName: 'terraform plan'
-  environment: $(environment)
+  environment: ${{ parameters.environment }} 
 
   strategy:
     runOnce:

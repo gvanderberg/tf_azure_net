@@ -6,6 +6,8 @@ stages:
 
   jobs:
   - template: terraform-build.yml
+    parameters:
+      environment: 'dev'
 
 - stage: tf_plan_dev
   displayName: 'tf plan'
@@ -13,8 +15,6 @@ stages:
   pool:
     vmImage: ubuntu-latest
   variables:
-  - name: environment
-    value: 'dev'
   - name: network_security_group_name
     value: 'aznsg-dev-zn-titansoft'
   - name: resource_group_name
@@ -29,19 +29,20 @@ stages:
 
   jobs:
   - template: terraform-plan.yml
+    parameters:
+      environment: 'dev'
 
 - stage: tf_apply_dev
   displayName: 'tf apply'
   dependsOn: tf_plan_dev
   pool:
     vmImage: ubuntu-latest
-  variables:
-  - name: environment
-    value: 'dev'
   condition: succeeded('tf_plan_dev')
 
   jobs:
   - template: terraform-apply.yml
+    parameters:
+      environment: 'prod'
 
 - stage: tf_plan_prd
   displayName: 'tf plan'
@@ -49,8 +50,6 @@ stages:
   pool:
     vmImage: ubuntu-latest
   variables:
-  - name: environment
-    value: 'prod'
   - name: network_security_group_name
     value: 'aznsg-prd-prd-titansoft'
   - name: resource_group_name
@@ -65,15 +64,14 @@ stages:
 
   jobs:
   - template: terraform-plan.yml
+    parameters:
+      environment: 'prod'
 
 - stage: tf_apply_prd
   displayName: 'tf apply'
   dependsOn: tf_plan_prd
   pool:
     vmImage: ubuntu-latest
-  variables:
-  - name: environment
-    value: 'prod'
   condition: succeeded('tf_plan_prd')
 
   jobs:
