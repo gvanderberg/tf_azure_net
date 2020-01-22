@@ -17,4 +17,3 @@ steps:
     ARM_TENANT_ID: $(tf_tenant_id)
     ARM_SUBSCRIPTION_ID: $(tf_subscription_id)
   workingDirectory: $(Pipeline.Workspace)/$(tf_state_key)/tf
-  enabled: false
