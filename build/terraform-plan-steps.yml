@@ -37,4 +37,4 @@ steps:
   displayName: 'Compress $(tf_path) Artifact'
 
 - publish: $(tf_state_key).tar.gz
-  artifact: 'tfplan'
+  artifact: '$(artifact_name)'

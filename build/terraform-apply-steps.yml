@@ -1,10 +1,10 @@
 steps:
 - download: current
-  artifact: 'tfplan'
+  artifact: '$(artifact_name)'
 
 - script: |
     mkdir -p $(tf_state_key)/tf 
-    tar -xzvf tfplan/$(tf_state_key).tar.gz --directory $(tf_state_key)/tf
+    tar -xzvf $(artifact_name)/$(tf_state_key).tar.gz --directory $(tf_state_key)/tf
   displayName: 'Extract Artifact to $(tf_state_key)/tf'
   workingDirectory: '$(Pipeline.Workspace)'
 

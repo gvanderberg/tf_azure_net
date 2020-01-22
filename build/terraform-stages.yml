@@ -10,11 +10,13 @@ stages:
       environment: 'dev'
 
 - stage: tf_plan_dev
-  displayName: 'tf plan'
+  displayName: 'terraform plan - dev'
   dependsOn: build
   pool:
     vmImage: ubuntu-latest
   variables:
+  - name: artifact_name
+    value: dev_tfplan
   - name: network_security_group_name
     value: 'aznsg-dev-zn-titansoft'
   - name: resource_group_name
@@ -28,28 +30,31 @@ stages:
   condition: succeeded('build')
 
   jobs:
-  - template: terraform-plan.yml
-    parameters:
-      environment: 'dev'
+  - template: terraform-plan-dev.yml
 
 - stage: tf_apply_dev
-  displayName: 'tf apply'
+  displayName: 'terraform apply - dev'
   dependsOn: tf_plan_dev
   pool:
     vmImage: ubuntu-latest
+  variables:
+  - name: artifact_name
+    value: dev_tfplan
   condition: succeeded('tf_plan_dev')
 
   jobs:
-  - template: terraform-apply.yml
+  - template: terraform-apply-dev.yml
     parameters:
       environment: 'prod'
 
 - stage: tf_plan_prd
-  displayName: 'tf plan'
+  displayName: 'terraform plan - prod'
   dependsOn: tf_apply_dev
   pool:
     vmImage: ubuntu-latest
   variables:
+  - name: artifact_name
+    value: prd_tfplan
   - name: network_security_group_name
     value: 'aznsg-prd-prd-titansoft'
   - name: resource_group_name
@@ -63,16 +68,19 @@ stages:
   condition: succeeded('tf_apply_dev')
 
   jobs:
-  - template: terraform-plan.yml
+  - template: terraform-plan-prd.yml
     parameters:
       environment: 'prod'
 
 - stage: tf_apply_prd
-  displayName: 'tf apply'
+  displayName: 'terraform apply - prod'
   dependsOn: tf_plan_prd
   pool:
     vmImage: ubuntu-latest
+  variables:
+  - name: artifact_name
+    value: prd_tfplan
   condition: succeeded('tf_plan_prd')
 
   jobs:
-  - template: terraform-apply.yml
+  - template: terraform-apply-prd.yml
