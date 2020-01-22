@@ -56,7 +56,7 @@ stages:
   - name: artifact_name
     value: prd_tfplan
   - name: network_security_group_name
-    value: 'aznsg-prd-prd-titansoft'
+    value: 'aznsg-prd-zn-titansoft'
   - name: resource_group_name
     value: 'azrg-prd-zn-vnet'
   - name: tags_environment
