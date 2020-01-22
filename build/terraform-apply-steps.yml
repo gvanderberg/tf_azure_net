@@ -6,7 +6,7 @@ steps:
     mkdir -p $(tf_state_key)/tf 
     tar -xzvf tfplan/$(tf_state_key).tar.gz --directory $(tf_state_key)/tf
   displayName: 'Extract Artifact to $(tf_state_key)/tf'
-  workingDirectory: $(Pipeline.Workspace)
+  workingDirectory: '$(Pipeline.Workspace)'
 
 - script: |
     terraform apply -auto-approve -no-color -input=false tfplan
@@ -16,4 +16,4 @@ steps:
     ARM_CLIENT_SECRET: $(tf_client_secret)
     ARM_TENANT_ID: $(tf_tenant_id)
     ARM_SUBSCRIPTION_ID: $(tf_subscription_id)
-  workingDirectory: $(Pipeline.Workspace)/$(tf_state_key)/tf
+  workingDirectory: '$(Pipeline.Workspace)/$(tf_state_key)/tf'
