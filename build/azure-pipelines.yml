@@ -1,0 +1,29 @@
+trigger:
+  - master
+
+variables:
+- group: 'Terraform BE'
+- group: 'Terraform CLI'
+- name: location
+  value: 'southafricanorth'
+- name: network_security_group_name
+  value: 'aznsg-prd-zn-titansoft'
+- name: resource_group_name
+  value: 'azrg-prd-zn-vnet'
+- name: tags_created_by
+  value: 'Terraform'
+- name: tags_environment
+  value: 'Production'
+- name: tags_location
+  value: '$(location)'
+- name: tf_path
+  value: '$(Pipeline.Workspace)/drop'
+- name: tf_state_key
+  value: '$(Build.BuildId)'
+- name: virtual_network_name
+  value: 'azvnet-prd-zn-titansoft'
+- name: workspace_name
+  value: 'azure_vnet-prd'
+
+stages:
+- template: terraform-stages.yml

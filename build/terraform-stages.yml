@@ -1,0 +1,28 @@
+stages:
+- stage: build
+  displayName: 'package scripts'
+  pool:
+    vmImage: ubuntu-latest
+
+  jobs:
+  - template: terraform-build.yml
+
+- stage: tf_plan
+  displayName: 'tf plan'
+  dependsOn: build
+  pool:
+    vmImage: ubuntu-latest
+  condition: succeeded('build')
+
+  jobs:
+  - template: terraform-plan.yml
+
+- stage: tf_apply
+  displayName: 'tf apply'
+  dependsOn: tf_plan
+  pool:
+    vmImage: ubuntu-latest
+  condition: succeeded('tf_plan')
+
+  jobs:
+  - template: terraform-apply.yml

@@ -19,17 +19,17 @@ resource "azurerm_virtual_network" "this" {
   address_space       = ["10.0.0.0/16"]
 
   subnet {
-    name           = "azsnet_dmz"
+    name           = "azsnet_prd_dmz"
     address_prefix = "10.0.1.0/24"
   }
 
   subnet {
-    name           = "azsnet_edmz"
+    name           = "azsnet_prd_edmz"
     address_prefix = "10.0.2.0/24"
   }
 
   subnet {
-    name           = "azsnet_lan"
+    name           = "azsnet_prd_lan"
     address_prefix = "10.0.3.0/24"
     security_group = azurerm_network_security_group.this.id
   }
