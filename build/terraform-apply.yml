@@ -1,7 +1,7 @@
 jobs:
 - deployment: terraform_apply
   displayName: 'terraform apply'
-  environment: prod
+  environment: $(environment)
 
   strategy:
     runOnce:
