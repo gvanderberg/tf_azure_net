@@ -61,7 +61,7 @@ stages:
         value: "azvnet-prd-zn-titansoft"
       - name: workspace_name
         value: "azure_vnet-prd"
-    condition: succeeded("build")
+    condition: succeeded()
 
     jobs:
       - template: terraform-plan-prd.yml
