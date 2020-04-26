@@ -7,7 +7,6 @@ jobs:
   - deployment: terraform_plan
     displayName: "terraform plan"
     environment: ${{ parameters.environment }}
-    enabled: false
 
     strategy:
       runOnce:
