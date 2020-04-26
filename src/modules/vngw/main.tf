@@ -31,5 +31,6 @@ resource "azurerm_virtual_network_gateway" "this" {
     subnet_id                     = data.azurerm_subnet.this.id
   }
 
-  tags = var.tags
+  tags       = var.tags
+  depends_on = [azurerm_public_ip.this, module.vnet]
 }
