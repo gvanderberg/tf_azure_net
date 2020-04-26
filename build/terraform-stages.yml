@@ -26,7 +26,7 @@ stages:
     condition: succeeded()
 
     jobs:
-      - template: terraform-plan-prd.yml
+      - template: terraform-plan.yml
         parameters:
           environment: "prod"
 
@@ -41,6 +41,6 @@ stages:
     condition: succeeded()
 
     jobs:
-      - template: terraform-apply-prd.yml
+      - template: terraform-apply.yml
         parameters:
           environment: "prod"
