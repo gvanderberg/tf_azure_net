@@ -24,7 +24,6 @@ stages:
       - name: workspace_name
         value: "tf-azure-vnet-dev"
     condition: succeeded("build")
-    enabled: false
 
     jobs:
       - template: terraform-plan-dev.yml
@@ -40,7 +39,6 @@ stages:
       - name: artifact_name
         value: dev_tfplan
     condition: succeeded("tf_plan_dev")
-    enabled: false
 
     jobs:
       - template: terraform-apply-dev.yml
@@ -63,7 +61,7 @@ stages:
         value: "azvnet-prd-zn-titansoft"
       - name: workspace_name
         value: "azure_vnet-prd"
-    condition: succeeded("build")
+    condition: succeeded("tf_apply_dev")
 
     jobs:
       - template: terraform-plan-prd.yml

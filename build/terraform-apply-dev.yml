@@ -5,6 +5,7 @@ jobs:
   - deployment: terraform_apply
     displayName: "terraform apply"
     environment: {{ parameters.environment }}
+    enabled: false
 
     strategy:
       runOnce:
