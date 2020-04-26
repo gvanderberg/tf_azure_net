@@ -9,7 +9,7 @@ variables:
   - name: tags_created_by
     value: "Terraform"
   - name: tags_location
-    value: "$(location)"
+    value: "$(resource_group_location)"
   - name: tf_path
     value: "$(Pipeline.Workspace)/drop"
   - name: tf_state_key
