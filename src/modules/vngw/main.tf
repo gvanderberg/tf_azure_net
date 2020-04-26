@@ -32,5 +32,5 @@ resource "azurerm_virtual_network_gateway" "this" {
   }
 
   tags       = var.tags
-  depends_on = [azurerm_public_ip.this, module.vnet]
+  depends_on = [azurerm_public_ip.this, azurerm_virtual_network.this]
 }
