@@ -1,10 +1,13 @@
-jobs:
-- deployment: terraform_plan
-  displayName: 'terraform plan'
-  environment: dev
+parameters:
+  environment: ""
 
-  strategy:
-    runOnce:
-      deploy:
-        steps:
-        - template: terraform-plan-steps.yml
+jobs:
+  - deployment: terraform_plan
+    displayName: "terraform plan"
+    environment: {{ parameters.environment }}
+
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - template: terraform-plan-steps.yml

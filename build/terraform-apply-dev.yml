@@ -1,10 +1,13 @@
-jobs:
-- deployment: terraform_apply
-  displayName: 'terraform apply'
-  environment: dev
+parameters:
+  environment: ""
 
-  strategy:
-    runOnce:
-      deploy:
-        steps:
-        - template: terraform-apply-steps.yml
+jobs:
+  - deployment: terraform_apply
+    displayName: "terraform apply"
+    environment: {{ parameters.environment }}
+
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - template: terraform-apply-steps.yml

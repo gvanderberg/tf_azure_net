@@ -1,9 +1,5 @@
-variable "location" {
-  default = "__location__"
-}
-
-variable "network_security_group_name" {
-  default = "__network_security_group_name__"
+variable "resource_group_location" {
+  default = "__resource_group_location__"
 }
 
 variable "resource_group_name" {

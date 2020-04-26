@@ -1,6 +1,6 @@
 jobs:
-- job: build
-  displayName: 'package scripts'
+  - job: build
+    displayName: "package scripts"
 
-  steps:
-  - template: terraform-build-steps.yml
+    steps:
+      - template: terraform-build-steps.yml

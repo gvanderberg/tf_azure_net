@@ -1,8 +1,3 @@
-variable "network_security_group_name" {
-  description = "The name of the network security group"
-  type        = string
-}
-
 variable "resource_group_location" {
   description = "The location of the resource group"
   type        = string
