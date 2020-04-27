@@ -16,7 +16,7 @@ stages:
       - name: artifact_name
         value: prd_tfplan
       - name: gateway_name
-        value: "azvng-prd-zn-titansoft"
+        value: "azvngw-prd-zn-titansoft"
       - name: public_ip_name
         value: "azpip-prd-zn-titansoft"
       - name: resource_group_name
