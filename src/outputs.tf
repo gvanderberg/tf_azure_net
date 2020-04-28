@@ -7,13 +7,13 @@ output "resource_group_location" {
 }
 
 output "virtual_network_id" {
-  value = module.vnet.id
+  value = module.net.id
 }
 
 output "virtual_network_name" {
-  value = module.vnet.name
+  value = module.net.name
 }
 
 output "virtual_network_address_space" {
-  value = module.vnet.address_space
+  value = module.net.address_space
 }

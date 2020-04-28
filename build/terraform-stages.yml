@@ -15,16 +15,12 @@ stages:
     variables:
       - name: artifact_name
         value: prd_tfplan
-      - name: gateway_name
-        value: "azvngw-prd-zn-titansoft"
-      - name: public_ip_name
-        value: "azpip-prd-zn-titansoft"
       - name: resource_group_name
-        value: "azrg-prd-zn-vnet"
+        value: "azrg-prd-zn-net"
       - name: tags_environment
         value: "Production"
       - name: virtual_network_name
-        value: "azvnet-prd-zn-titansoft"
+        value: "aznet-prd-zn-titansoft"
       - name: workspace_name
         value: "tf-azure-vnet-prd"
     condition: succeeded()
