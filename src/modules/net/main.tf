@@ -38,7 +38,7 @@ resource "azurerm_virtual_network" "this" {
 
   subnet {
     name           = "azsnet-prd-zn-k8s"
-    address_prefix = "10.0.5.0/23"
+    address_prefix = "10.0.6.0/23"
     # security_group = azurerm_network_security_group.this.id
   }
 
