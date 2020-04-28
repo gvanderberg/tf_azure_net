@@ -19,20 +19,26 @@ resource "azurerm_virtual_network" "this" {
   }
 
   subnet {
-    name           = "azsnet-dmz"
+    name           = "azsnet-prd-zn-dmz"
     address_prefix = "10.0.2.0/24"
     # security_group = azurerm_network_security_group.this.id
   }
 
   subnet {
-    name           = "azsnet-edmz"
+    name           = "azsnet-prd-zn-edmz"
     address_prefix = "10.0.3.0/24"
     # security_group = azurerm_network_security_group.this.id
   }
 
   subnet {
-    name           = "azsnet-lan"
+    name           = "azsnet-prd-zn-lan"
     address_prefix = "10.0.4.0/24"
+    # security_group = azurerm_network_security_group.this.id
+  }
+
+  subnet {
+    name           = "azsnet-prd-zn-k8s"
+    address_prefix = "10.51.12.0/23"
     # security_group = azurerm_network_security_group.this.id
   }
 
