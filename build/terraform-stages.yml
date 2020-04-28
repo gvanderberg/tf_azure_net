@@ -22,7 +22,7 @@ stages:
       - name: virtual_network_name
         value: "aznet-prd-zn-titansoft"
       - name: workspace_name
-        value: "tf-azure-vnet-prd"
+        value: "tf-azure-net-prd"
     condition: succeeded()
 
     jobs:
