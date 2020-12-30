@@ -5,19 +5,19 @@ locals {
       address = format(var.address_space, "1", "24")
     },
     {
-      name    = format(subnet_name_prefix, "dmz")
+      name    = format(var.subnet_name_prefix, "dmz")
       address = format(var.address_space, "10", "23")
     },
     {
-      name    = format(subnet_name_prefix, "edmz")
+      name    = format(var.subnet_name_prefix, "edmz")
       address = format(var.address_space, "20", "23")
     },
     {
-      name    = format(subnet_name_prefix, "lan")
+      name    = format(var.subnet_name_prefix, "lan")
       address = format(var.address_space, "30", "23")
     },
     {
-      name    = format(subnet_name_prefix, "k8s")
+      name    = format(var.subnet_name_prefix, "k8s")
       address = format(var.address_space, "40", "22")
     }
   ]
