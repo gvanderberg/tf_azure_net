@@ -1,0 +1,7 @@
+steps:
+  - bash: |
+      set -e
+
+      echo 'address_space = "$(address_space)"'
+    displayName: "terraform test"
+    name: "terraformTest"

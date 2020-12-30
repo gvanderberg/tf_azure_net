@@ -1,9 +1,21 @@
-variable "resource_group_location" {
-  default = "__resource_group_location__"
+variable "address_space" {
+  default = "__address_space__"
+}
+
+variable "location" {
+  default = "__location__"
+}
+
+variable "resource_group_create" {
+  default = "__resource_group_create__"
 }
 
 variable "resource_group_name" {
   default = "__resource_group_name__"
+}
+
+variable "subnet_name_prefix" {
+  default = "__subnet_name_prefix__"
 }
 
 variable "virtual_network_name" {
@@ -12,7 +24,7 @@ variable "virtual_network_name" {
 
 variable "tags" {
   default = {
-    createdBy   = "__tags_created_by__"
+    createdBy   = "Terraform"
     environment = "__tags_environment__"
     location    = "__tags_location__"
     managedBy   = "__tags_managed_by__"

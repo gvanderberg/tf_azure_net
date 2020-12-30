@@ -1,0 +1,20 @@
+variables:
+  - group: PreProd - Terraform CLI
+  - name: address_space
+    value: 10.40.%s.0/%s
+  - name: location
+    value: westeurope
+  - name: resource_group_create
+    value: true
+  - name: resource_group_name
+    value: azrg-dev-we-net
+  - name: subnet_name_prefix
+    value: azsnet-dev-we-%s
+  - name: virtual_network_name
+    value: aznet-dev-we-titansoft
+  - name: tags_environment
+    value: Development
+  - name: terraform_version
+    value: 0.14.3
+  - name: workspace_name
+    value: azure-net-we-dev
