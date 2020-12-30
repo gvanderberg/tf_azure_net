@@ -9,7 +9,7 @@ variables:
   - name: resource_group_name
     value: azrg-prd-we-net
   - name: subnet_name_prefix
-    value: azsnet-dev-we-%s
+    value: azsnet-prd-we-%s
   - name: virtual_network_name
     value: aznet-prd-we-titansoft
   - name: tags_environment
