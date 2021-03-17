@@ -1,8 +1,3 @@
-variable "gateway_name" {
-  description = "The name of the Virtual Network Gateway."
-  type        = string
-}
-
 variable "public_ip_name" {
   description = "Specifies the name of the Public IP resource."
   type        = string
@@ -18,6 +13,16 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "virtual_network_gateway_name" {
+  description = "The name of the Virtual Network Gateway."
+  type        = string
+}
+
+variable "virtual_network_gateway_sku" {
+  description = "Configuration of the size and capacity of the virtual network gateway."
+  type        = string
+}
+
 variable "virtual_network_name" {
   description = "The name of the virtual network"
   type        = string
@@ -25,5 +30,5 @@ variable "virtual_network_name" {
 
 variable "tags" {
   description = "The tags to use for this resource"
-  type        = map
+  type        = map(any)
 }

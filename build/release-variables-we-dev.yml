@@ -4,6 +4,8 @@ variables:
     value: 10.40.%d.0/%d
   - name: location
     value: westeurope
+  - name: public_ip_name
+    value: azpip-dev-we-titansoft
   - name: resource_group_create
     value: true
   - name: resource_group_name
@@ -12,6 +14,10 @@ variables:
     value: azsnet-dev-we-%s
   - name: virtual_network_name
     value: aznet-dev-we-titansoft
+  - name: virtual_network_gateway_name
+    value: azvng-dev-we-titansoft
+  - name: virtual_network_gateway_sku
+    value: VpnGw1
   - name: tags_environment
     value: Development
   - name: terraform_version

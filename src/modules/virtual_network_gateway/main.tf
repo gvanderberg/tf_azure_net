@@ -4,16 +4,22 @@ data "azurerm_subnet" "this" {
   resource_group_name  = var.resource_group_name
 }
 
+resource "random_integer" "this" {
+  min = 1000
+  max = 5000
+}
+
 resource "azurerm_public_ip" "this" {
   name                = var.public_ip_name
   location            = var.resource_group_location
   resource_group_name = var.resource_group_name
   allocation_method   = "Dynamic"
+  sku                 = "Standard"
   tags                = var.tags
 }
 
 resource "azurerm_virtual_network_gateway" "this" {
-  name                = var.gateway_name
+  name                = var.virtual_network_gateway_name
   location            = var.resource_group_location
   resource_group_name = var.resource_group_name
 
@@ -22,10 +28,10 @@ resource "azurerm_virtual_network_gateway" "this" {
 
   active_active = false
   enable_bgp    = false
-  sku           = "Basic"
+  sku           = "VpnGw1"
 
   ip_configuration {
-    name                          = "azvng-prd-zn-titansoft-config"
+    name                          = format("ipconfig-%s", random_integer.this.result)
     public_ip_address_id          = azurerm_public_ip.this.id
     private_ip_address_allocation = "Dynamic"
     subnet_id                     = data.azurerm_subnet.this.id
