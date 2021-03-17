@@ -2,7 +2,7 @@
 ## - managed-by
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: ubuntu-18.04
 
 pr: none
 
