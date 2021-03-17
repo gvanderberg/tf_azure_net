@@ -1,5 +1,5 @@
 variables:
-  - group: Prod - Terraform CLI
+  - group: Prod - Terraform Credentials
   - name: address_space
     value: 10.50.%d.0/%d
   - name: location
