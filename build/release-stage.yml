@@ -22,8 +22,6 @@ stages:
     condition: ${{ parameters.condition }}
     dependsOn: ${{ parameters.dependsOn }}
     displayName: ${{ parameters.displayName }}
-    pool:
-      vmImage: ubuntu-latest
 
     jobs:
       - job: provision

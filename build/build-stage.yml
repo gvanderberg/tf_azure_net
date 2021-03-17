@@ -9,8 +9,6 @@ parameters:
 stages:
   - stage: ${{ parameters.stageName }}
     displayName: ${{ parameters.displayName }}
-    pool:
-      vmImage: ubuntu-latest
 
     jobs:
       - job: build

@@ -1,6 +1,9 @@
 # input variables that need to be defined in the pipeline:
 ## - managed-by
 
+pool:
+  vmImage: ubuntu-latest
+
 pr: none
 
 trigger:
