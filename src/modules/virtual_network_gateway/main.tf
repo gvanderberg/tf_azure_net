@@ -28,7 +28,7 @@ resource "azurerm_virtual_network_gateway" "this" {
 
   active_active = false
   enable_bgp    = false
-  sku           = "VpnGw1"
+  sku           = var.virtual_network_gateway_sku
 
   ip_configuration {
     name                          = format("ipconfig-%s", random_integer.this.result)
