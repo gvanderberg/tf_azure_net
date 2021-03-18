@@ -17,7 +17,7 @@ variables:
   - name: virtual_network_gateway_name
     value: azvng-prd-we-titansoft
   - name: virtual_network_gateway_sku
-    value: VpnGw1
+    value: Basic
   - name: tags_environment
     value: Production
   - name: terraform_version
