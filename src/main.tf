@@ -22,14 +22,14 @@ module "net" {
   tags                    = var.tags
 }
 
-module "vng" {
-  source = "./modules/virtual_network_gateway"
+# module "vng" {
+#   source = "./modules/virtual_network_gateway"
 
-  virtual_network_gateway_name = var.virtual_network_gateway_name
-  virtual_network_gateway_sku  = var.virtual_network_gateway_sku
-  resource_group_name          = module.rg.name
-  resource_group_location      = module.rg.location
-  public_ip_name               = var.public_ip_name
-  virtual_network_name         = var.virtual_network_name
-  tags                         = var.tags
-}
+#   virtual_network_gateway_name = var.virtual_network_gateway_name
+#   virtual_network_gateway_sku  = var.virtual_network_gateway_sku
+#   resource_group_name          = module.rg.name
+#   resource_group_location      = module.rg.location
+#   public_ip_name               = var.public_ip_name
+#   virtual_network_name         = var.virtual_network_name
+#   tags                         = var.tags
+# }
