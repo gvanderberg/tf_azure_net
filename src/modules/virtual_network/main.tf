@@ -2,23 +2,23 @@ locals {
   subnets = [
     {
       name    = "GatewaySubnet"
-      address = format(var.address_space, "1", "24")
+      address = cidrsubnet(var.address_space, "8", "1")
     },
     {
       name    = format(var.subnet_name_prefix, "dmz")
-      address = format(var.address_space, "10", "23")
+      address = cidrsubnet(var.address_space, "7", "2")
     },
     {
       name    = format(var.subnet_name_prefix, "edmz")
-      address = format(var.address_space, "20", "23")
+      address = cidrsubnet(var.address_space, "7", "3")
     },
     {
       name    = format(var.subnet_name_prefix, "lan")
-      address = format(var.address_space, "30", "23")
+      address = cidrsubnet(var.address_space, "7", "4")
     },
     {
       name    = format(var.subnet_name_prefix, "k8s")
-      address = format(var.address_space, "40", "22")
+      address = cidrsubnet(var.address_space, "6", "1")
     }
   ]
 }
@@ -35,7 +35,7 @@ resource "azurerm_virtual_network" "this" {
   name                = var.virtual_network_name
   location            = var.resource_group_location
   resource_group_name = var.resource_group_name
-  address_space       = [format(var.address_space, "0", "16")]
+  address_space       = [var.address_space]
 
   dynamic "subnet" {
     for_each = local.subnets

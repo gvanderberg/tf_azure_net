@@ -1,5 +1,10 @@
-variable "gateway_name" {
-  description = "The name of the Virtual Network Gateway."
+variable "virtual_network_gateway_create" {
+  description = "Should the virtual network gateway be created."
+  type        = bool
+}
+
+variable "virtual_network_gateway_name" {
+  description = "The name of the virtual network gateway."
   type        = string
 }
 
@@ -25,5 +30,5 @@ variable "virtual_network_name" {
 
 variable "tags" {
   description = "The tags to use for this resource"
-  type        = map
+  type        = map(any)
 }
