@@ -1,34 +1,34 @@
 locals {
-  subnets = [
+  subnets = tolist([
     {
       name    = "GatewaySubnet"
       address = cidrsubnet(var.address_space, "8", "1")
     },
     {
       name    = format(var.subnet_name_prefix, "dmz")
-      address = cidrsubnet(var.address_space, "7", "2")
+      address = cidrsubnet(var.address_space, "7", "1")
     },
     {
       name    = format(var.subnet_name_prefix, "edmz")
-      address = cidrsubnet(var.address_space, "7", "3")
+      address = cidrsubnet(var.address_space, "7", "2")
     },
     {
       name    = format(var.subnet_name_prefix, "lan")
-      address = cidrsubnet(var.address_space, "7", "4")
+      address = cidrsubnet(var.address_space, "7", "3")
     },
     {
       name    = format(var.subnet_name_prefix, "k8s")
-      address = cidrsubnet(var.address_space, "6", "1")
+      address = cidrsubnet(var.address_space, "6", "2")
     }
-  ]
+  ])
 }
 
 # resource "azurerm_network_security_group" "this" {
 #   name                = var.network_security_group_name
 #   location            = azurerm_resource_group.this.location
 #   resource_group_name = azurerm_resource_group.this.name
-#   tags                = var.tags
-#   depends_on          = [azurerm_resource_group.this]
+
+#   tags = var.tags
 # }
 
 resource "azurerm_virtual_network" "this" {
